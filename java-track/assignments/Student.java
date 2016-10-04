@@ -1,4 +1,3 @@
-
 public class Student {
 	
 	private String name;
@@ -7,7 +6,7 @@ public class Student {
 	private double GPA;
 	private String legacy;
 	
-	public Student(String name, String ID, int credits, double GPA, String legacy){
+	public Student(String firstname, String lastname, int StudentID){
 		this.name = name;
 		this.ID = ID;
 		this.credits = credits;
@@ -55,8 +54,8 @@ public class Student {
 		}
 	}
 	
-	public double submitGrade(){
-		return this.GPA = ((g * c) / this.credits);
+	public double submitGrade(double grade, int credits){
+		return this.GPA = / this.credits);
 	}
 	
 	public int computeTuition(){
