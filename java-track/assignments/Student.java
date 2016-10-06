@@ -1,42 +1,37 @@
 public class Student {
 	
+	private String firstname;
+	private String lastname;
+	private int StudentID;
 	private String name;
-	private String ID;
 	private int credits;
-	private double GPA;
-	private String legacy;
-	
+	private int GPA;
+
 	public Student(String firstname, String lastname, int StudentID){
-		this.name = name;
-		this.ID = ID;
-		this.credits = credits;
-		this.GPA = GPA;
-		this.legacy = legacy;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.StudentID = StudentID;
+		this.name = this.firstname + " " + this.lastname;
+		this.credits = 0;
+		this.GPA = ;
 	}
 	
-	double grade;
-	int c;
-	double g;
-	int tuition;
+	
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
-	public String getID() {
-		return ID;
+	public int getStudentID() {
+		return this.StudentID;
 	}
 	
 	public int getCredits() {
-		return credits;
+		return this.credits;
 	}
 
 	public double getGPA() {
-		return GPA;
-	}
-
-	public String getLegacy() {
-		return legacy;
+		return this.GPA;
 	}
 
 	public String getClassStanding(){
@@ -54,16 +49,24 @@ public class Student {
 		}
 	}
 	
-	public double submitGrade(double grade, int credits){
-		return this.GPA = / this.credits);
-	}
-	
-	public int computeTuition(){
+	public double submitGrade(double grade, int credits)
+	{
+		double qualityscore = grade * credits;
+		double sumqualityscore = this.GPA * this.credits;
+		double newGPA = ((qualityscore + sumqualityscore) / (credits + this.credits));
+		newGPA = Math.round(newGPA * 1000) / 1000;
+		return newGPA;
 		
 	}
 	
-	public String createLegacy(){
-		return this.legacy = this.name + this.name;
+	public int computeTuition()
+	{
+		
+	}
+	
+	public Student createLegacy(Student s, Student ss)
+	{
+		 
 	}
 	
 	

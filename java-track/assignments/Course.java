@@ -3,11 +3,14 @@
 public class Course {
 	
 	private String name;
-	private int credits;
-	private int seats;
+	private int remainingSeats;
 	private int students;
+	private int credits;
 	
-	public Course(String name, int credits, int seats, int students){
+	public Course(String name, int remainingSeats, int credits)
+	{
+		this.name = name;
+		this.remainingSeats = remainingSeats;
 		
 	}
 
@@ -19,23 +22,25 @@ public class Course {
 		return credits;
 	}
 
-	public int getSeats() {
-		return seats;
+	public int getRemainingSeats() {
+		return remainingSeats;
 	}
 
 	public int getStudents() {
 		return students;
 	}
 	
-	public boolean addStudent(){
+	public boolean addStudent(Student s2)
+	{
 		
 	}
 	
-	public generateRoster(){
+	public void generateRoster(){
 		
 	}
 	
-	public averageGPA(){
+	public double averageGPA()
+	{
 		
 	}
 	
