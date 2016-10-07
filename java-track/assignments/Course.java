@@ -1,41 +1,50 @@
-
+ import java.util.Arrays;
 
 public class Course {
 	
 	private String name;
 	private int remainingSeats;
-	private int students;
+	private Student[] students;
 	private int credits;
 	
-	public Course(String name, int remainingSeats, int credits)
+	public Course(String name, int credits, int remainingSeats)
 	{
 		this.name = name;
 		this.remainingSeats = remainingSeats;
+		this.credits = credits;
+		this.students = students;
 		
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public int getCredits() {
-		return credits;
+		return this.credits;
 	}
 
 	public int getRemainingSeats() {
-		return remainingSeats;
+		return this.remainingSeats;
 	}
 
-	public int getStudents() {
-		return students;
+	public Student[] getStudents() {
+		return this.students;
 	}
 	
 	public boolean addStudent(Student s2)
 	{
-		
+		if(){
+			this.remainingSeats = this.remainingSeats - 1;
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
-	public void generateRoster(){
+	public void generateRoster()
+	{
 		
 	}
 	
@@ -44,5 +53,8 @@ public class Course {
 		
 	}
 	
-	
+	public String toString()
+	{
+		return this.name + ", worth " + this.credits;	
+	}
 }
