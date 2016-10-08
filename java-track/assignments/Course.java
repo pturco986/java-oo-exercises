@@ -1,10 +1,10 @@
- import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Course {
 	
 	private String name;
 	private int remainingSeats;
-	private Student[] students;
+	private ArrayList<Student> students;
 	private int credits;
 	
 	public Course(String name, int credits, int remainingSeats)
@@ -12,7 +12,7 @@ public class Course {
 		this.name = name;
 		this.remainingSeats = remainingSeats;
 		this.credits = credits;
-		this.students = students;
+		this.students = new ArrayList<Student>();
 		
 	}
 
@@ -27,29 +27,41 @@ public class Course {
 	public int getRemainingSeats() {
 		return this.remainingSeats;
 	}
-
-	public Student[] getStudents() {
-		return this.students;
-	}
 	
 	public boolean addStudent(Student s2)
 	{
-		if(){
-			this.remainingSeats = this.remainingSeats - 1;
+		if(remainingSeats > 0 && !this.students.contains(s2))
+		{
+			this.remainingSeats--;
+			this.students.add(s2);
 			return true;
 		}
-		else{
+		else
+		{
 			return false;
 		}
 	}
 	
-	public void generateRoster()
+	public String generateRoster()
 	{
-		
+		String studentList = "";
+		for (Student student : this.students)
+		{
+			studentList += student.getName() + ", ";
+		}
+		return studentList;
 	}
 	
 	public double averageGPA()
 	{
+		double gpasum = 0;
+		for (Student student : this.students)
+		{
+			gpasum += student.getGPA();
+		}
+		gpasum = gpasum / this.students.size();
+		return gpasum;
+		
 		
 	}
 	
