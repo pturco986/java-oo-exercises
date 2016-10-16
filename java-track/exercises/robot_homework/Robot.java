@@ -3,13 +3,11 @@ package robot_homework;
 public class Robot {
 
 	private String name;
-	private int positionx;
-	private int positiony;
-	private int speed;
-	private int orientation;
-	private int distance;
-	private int x;
-	private int y;
+	protected int positionx;
+	protected int positiony;
+	protected int speed;
+	protected int orientation;
+	protected int distance;
 	
 	public Robot(String name, int positionx, int positiony, int speed, int orientation){
 		this.name = name;
@@ -38,6 +36,7 @@ public class Robot {
 	public int getSpeed()
 	{
 		return this.speed;
+		//how far it moves on a grid
 	}
 	
 	public int getOrientation()
@@ -50,7 +49,7 @@ public class Robot {
 		return this.distance;
 	}
 	//change orientation
-	public void changeOrientation(int newOrientation)
+	public void changeOrientation(int newOrientation) // 1 for north, 2 for east, 3 for south, 4 for west
 	{
 		this.orientation = newOrientation;
 	}

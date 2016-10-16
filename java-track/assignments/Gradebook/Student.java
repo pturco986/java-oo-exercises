@@ -1,3 +1,4 @@
+package Gradebook;
 public class Student {
 	
 	private String firstname;
