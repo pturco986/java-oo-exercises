@@ -65,9 +65,9 @@ public class Student {
 		return totaltuition;
 	}
 	
-	public Student createLegacy(Student s, Student ss)
+	public static Student createLegacy(Student s, Student ss)
 	{
-		Student legacy = new Student(firstname, lastname, StudentID);
+		Student legacy = new Student(s.firstname, ss.lastname, s.StudentID + ss.StudentID);
 			legacy.name = s.name + ss.name;
 			legacy.StudentID = s.StudentID + ss.StudentID;
 			legacy.credits = Math.max(s.credits, ss.credits);
