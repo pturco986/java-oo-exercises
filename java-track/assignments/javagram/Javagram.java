@@ -1,6 +1,7 @@
 package javagram;
 
 import javagram.filters.*;
+import robot_homework.RobotMenu;
 
 import java.io.File;
 import java.util.Arrays;
@@ -15,6 +16,7 @@ public class Javagram {
 		String dir = String.join(File.separator, baseParts);
 		String relPath;
 		Picture picture = null;
+		Filter filter = null;
 		Scanner in = new Scanner(System.in);
 		
 		// prompt user for image to filter and validate input
@@ -40,9 +42,13 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
-		
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-		BlueFilter filter = getFilter();			
+		
+		do
+		{
+			Filter filter = getFilter();	
+		}while(filter == null);
+				
 
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -71,10 +77,10 @@ public class Javagram {
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static BlueFilter getFilter() {
+	private static Filter getFilter() {
 		
 		// TODO - create some more filters, and add logic to return the appropriate one
-		return new BlueFilter();
+		return new Filter();
 		
 	}
 
