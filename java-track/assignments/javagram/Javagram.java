@@ -1,7 +1,7 @@
 package javagram;
 
 import javagram.filters.*;
-import robot_homework.RobotMenu;
+
 
 import java.io.File;
 import java.util.Arrays;
@@ -32,7 +32,7 @@ public class Javagram {
 				
 				String[] relPathParts = relPath.split(File.separator);
 				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
-				
+				System.out.println("Image path: " + imagePath);
 				picture = new Picture(imagePath);
 				
 			} catch (RuntimeException e) {
@@ -46,7 +46,19 @@ public class Javagram {
 		
 		do
 		{
-			Filter filter = getFilter();	
+			System.out.println("Select a filter!");
+			System.out.println("1. Choose BlueFilter");
+			System.out.println("2. Choose BrightnessFilter");
+			System.out.println("3. Choose GrayscaleFilter");
+			System.out.println("4. Exit");
+			System.out.println("Please select an option: ");
+			int selection = in.nextInt();
+			while(selection < 0 || selection > 4);
+			{
+				System.out.println("Invalid selection, please try again: ");
+				selection = in.nextInt();
+			}
+			filter = getFilter(selection);	
 		}while(filter == null);
 				
 
@@ -57,30 +69,59 @@ public class Javagram {
 		System.out.println("Image successfully filtered");
 		
 		// save image, if desired
-		
+		boolean confirm = true;
+		do 
+		{
 		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
 		String fileName = in.next();
 		
 		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
 		
-		if (fileName.equals("exit")) {
+		if (fileName.equals("exit")) 
+		{
 			System.out.println("Image not saved");
-		} else {
+		} 
+			else 
+			{
 			String absFileName = dir + File.separator + fileName;
-			processed.save(absFileName);
-			System.out.println("Image saved to " + absFileName);
-		}	
-		
+			File throwawayFile = new File(absFileName);
+			
+				if (!throwawayFile.exists())
+				{
+				processed.save(absFileName);
+				System.out.println("Image saved to " + absFileName);
+				} 
+				else 
+				{
+				System.out.println("Are you certain you want to overwrite the file? Type 'yes'");
+				String confirmation = in.next();
+					if (confirmation != "yes")
+					{
+						confirm = false;
+					}
+				} 
+			}
+		} while (!confirm);
 		// close input scanner
 		in.close();
-	}
+		}
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
-	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static Filter getFilter() {
-		
+	// TODO - refactor this method to throw an exception if the int doesn't correspond to a filter
+	private static Filter getFilter(int ID) {
+		Filter newFilter;
+		switch (ID) {
+			case 1: newFilter = new BlueFilter();
+			break;
+			case 2: newFilter = new BrightnessFilter();
+			break;
+			case 3: newFilter = new GrayscaleFilter();
+			break;
+			default: throw new IndexOutOfBoundsException("Not a valid selection"); 
+			
+		}
 		// TODO - create some more filters, and add logic to return the appropriate one
-		return new Filter();
+		return newFilter;
 		
 	}
 
