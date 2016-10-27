@@ -30,9 +30,10 @@ public class Javagram {
 				System.out.println("Image path (relative to " + dir + "):");
 				relPath = in.next();
 				
-				String[] relPathParts = relPath.split(File.separator);
-				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
-				System.out.println("Image path: " + imagePath);
+				//String[] relPathParts = relPath.split(File.separator);
+				//imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
+			
+				imagePath = (dir + "\\" + relPath);
 				picture = new Picture(imagePath);
 				
 			} catch (RuntimeException e) {
@@ -50,15 +51,15 @@ public class Javagram {
 			System.out.println("1. Choose BlueFilter");
 			System.out.println("2. Choose BrightnessFilter");
 			System.out.println("3. Choose GrayscaleFilter");
-			System.out.println("4. Exit");
 			System.out.println("Please select an option: ");
 			int selection = in.nextInt();
-			while(selection < 0 || selection > 4);
+			try 
 			{
-				System.out.println("Invalid selection, please try again: ");
-				selection = in.nextInt();
+				filter = getFilter(selection);	
+			} catch (IndexOutOfBoundsException i)
+			{
+				System.out.println(i);
 			}
-			filter = getFilter(selection);	
 		}while(filter == null);
 				
 
@@ -93,7 +94,7 @@ public class Javagram {
 				} 
 				else 
 				{
-				System.out.println("Are you certain you want to overwrite the file? Type 'yes'");
+				System.out.println("Are you certain you want to overwrite the file? Type 'yes', otherwise type 'no'");
 				String confirmation = in.next();
 					if (confirmation != "yes")
 					{

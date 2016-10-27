@@ -20,8 +20,9 @@ public class GrayscaleFilter implements Filter {
 	          int r = c.getRed();
 	          int g = c.getGreen();
 	          int b = c.getBlue();
+	          int avg = (r+b+g) / 3;
 	          
-	          processed.set(i, j, new Color(200, 200, 200));
+	          processed.set(i, j, new Color(avg, avg, avg));
 	    	  
 	      }
 	    }

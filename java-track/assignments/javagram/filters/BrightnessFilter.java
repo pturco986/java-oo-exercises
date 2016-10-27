@@ -21,7 +21,24 @@ public class BrightnessFilter implements Filter{
 	          int g = c.getGreen();
 	          int b = c.getBlue();
 	          
-	          processed.set(i, j, new Color((r+50), (g+50), (b+50)));
+	          int brightr = r + 50;
+	          int brightg = g + 50;
+	          int brightb = b + 50;
+	          if (brightb > 255)
+	          {
+	        	  brightb = 255;
+	          }
+	          if (brightg > 255)
+	          {
+	        	  brightg = 255;
+	          }
+	          if (brightr > 255)
+	          {
+	        	  brightr = 255;
+	          }
+	          
+	          
+	          processed.set(i, j, new Color(brightr, brightg, brightb));
 	    	  
 	      }
 	    }
