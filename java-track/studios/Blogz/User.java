@@ -3,13 +3,14 @@ package Blogz;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class User {
+public class User extends Entity{
 	protected String name;
 	protected String password;
 	protected static ArrayList<User> users = new ArrayList<User>();
 	
 	public User(String name, String password)
 	{
+		super();
 		this.name = name;
 		this.password = password;
 	}

@@ -1,15 +1,15 @@
 package Blogz;
 import java.util.Date;
 
-public class Post extends User {
+public class Post extends Entity {
 	private String body;
 	private String title;
 	private String author;
 	private final Date created;
 	private Date modified;
 	
-	public Post(String name, String password, String body, String title, String author, Date created) {
-		super(name, password);
+	public Post(String body, String title, String author, Date created) {
+		super();
 		this.body = body;
 		this.title = title;
 		this.author = author;
