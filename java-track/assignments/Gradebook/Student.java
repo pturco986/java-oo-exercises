@@ -1,4 +1,7 @@
 package Gradebook;
+
+import java.util.Objects;
+
 public class Student {
 	
 	private String firstname;
@@ -80,9 +83,29 @@ public class Student {
 	{
 		return "Student name: " + this.name + ", credits earned: " + this.credits;
 	}
-	
-
-
+	@Override
+	public boolean equals(Object o)
+	{
+		//self check
+		if (this == o)
+		{
+			return true;
+		}
+		//null check
+		if (o == null)
+		{
+			return false;
+		}
+		//type check and cast
+		if (getClass() != o.getClass())
+		{
+			return false;
+		}
+		Student student = (Student) o;
+		//field comparison
+		return Objects.equals(firstname, student.firstname) && Objects.equals(lastname, student.lastname) && Objects.equals(StudentID, student.StudentID);
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

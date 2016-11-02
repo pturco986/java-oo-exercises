@@ -228,6 +228,42 @@ public class StudentAndCourseTest extends TestCase {
 		}
 	}
 
+	private Student o1 = new Student();
+	private Student o2 = new Student();
+	private Student o3 = new Student();
+	
+	@Test
+	public void testEqualsOperator()
+	{
+		assertTrue(o1 == o1);
+		assertFalse(o1 == o2);
+	}
+	
+	@Test
+	public void testSelfEquals()
+	{
+		assertTrue(o1.equals(o1));
+		assertTrue(o2.equals(o2));
+		assertTrue(o3.equals(o3));
+	}
+	
+	@Test
+	public void testValueCheck()
+	{
+		assertTrue(o1.equals(o2));
+		assertTrue(o2.equals(o1));
+	}
+	@Test
+	public void testTransitivity()
+	{
+		assertTrue(o1.equals(o2));
+		assertTrue(o2.equals(o3));
+		assertTrue(o3.equals(o1));
+	}
 
-
+	@Test
+	public void testNull()
+	{
+		assertFalse(o1.equals(null));
+	}
 }
